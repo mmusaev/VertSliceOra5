@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
-using VertSliceOra5.Features.Sessions;
 using VertSliceOra5.Models;
 
 namespace VertSliceOra5
@@ -33,6 +32,8 @@ namespace VertSliceOra5
             {
                 options.UseOracle(Configuration.GetConnectionString("StudentDb"));
                 options.EnableSensitiveDataLogging();
+               // options.LogTo(Console.WriteLine, LogLevel.Information);
+
                 options.LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
             });
 
@@ -41,8 +42,6 @@ namespace VertSliceOra5
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VertSliceOra5", Version = "v1" });
             });
-            //services.AddControllers(options => options.Filters.Add<FluentValidationExceptionFilter>())
-            //   .AddFluentValidation(config => config.RegisterValidatorsFromAssembly(currentAssembly));
 
         }
 

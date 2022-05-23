@@ -6,9 +6,6 @@ namespace VertSliceOra5.Models
 {
     public partial class ModelContext : DbContext
     {
-        public ModelContext(DbContextOptions options)
-        {
-        }
 
         public ModelContext(DbContextOptions<ModelContext> options)
             : base(options)
