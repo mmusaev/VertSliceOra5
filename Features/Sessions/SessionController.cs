@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using VertSliceOra5.Infrastructure;
 using static VertSliceOra5.Features.Sessions.GetAllSessions;
 using static VertSliceOra5.Features.Sessions.GetSessions;
 
@@ -18,19 +19,24 @@ namespace VertSliceOra5.Controllers
         }
 
         [HttpGet("GetByCode")]
-        public async Task<ActionResult<GetSessionResult>> GetByCode([FromQuery]string code)
+        public async Task<IActionResult> GetByCode([FromQuery] GetSessionQuery query)
         {
-            var result = await media.Send(new GetSessionQuery(code));
+            var result = await media.Send(query);
 
-            return result;
+            return ResultHelper(result);
         }
 
         [HttpGet("Get")]
-        public async Task<ActionResult<GetSessionsResult>> Get()
+        public async Task<IActionResult> Get()
         {
             var result = await media.Send(new GetSessionsQuery());
 
-            return result;
+            return ResultHelper(result);
+        }
+
+        private IActionResult ResultHelper<T>(Result<T> result)
+        {
+            return result.IsSuccess ? Ok(result.Payload) : Problem(title: result.FailureReason);
         }
     }
 }
