@@ -9,6 +9,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using VertSliceOra5.Models;
+using FluentValidation.Validators;
+using System.Reflection;
+using FluentValidation.AspNetCore;
 
 namespace VertSliceOra5
 {
@@ -37,7 +40,10 @@ namespace VertSliceOra5
                 options.LogTo(Console.WriteLine, new[] { DbLoggerCategory.Database.Command.Name }, LogLevel.Information);
             });
 
-            services.AddControllers();
+            services.AddControllers()
+                 .AddFluentValidation(c => c.RegisterValidatorsFromAssemblyContaining<Startup>());
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "VertSliceOra5", Version = "v1" });

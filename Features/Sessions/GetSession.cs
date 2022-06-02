@@ -30,6 +30,7 @@ namespace VertSliceOra5.Features.Sessions
         {
             public Validator()
             {
+
                 RuleFor(x => x.SessionCode)
                     .NotNull()
                     .MaximumLength(2)
@@ -53,14 +54,6 @@ namespace VertSliceOra5.Features.Sessions
         public async Task<Result<GetSessionResult>> Handle(GetSessionQuery request, CancellationToken cancellationToken)
         {
             GetSessionResult result = new GetSessionResult();
-
-            var validator = new Validator();
-            FluentValidation.Results.ValidationResult validation = validator.Validate(request);
-            if (!validation.IsValid)
-            {
-                result.Message = validation.Errors[0].ErrorMessage;
-                return Result<GetSessionResult>.Fail($"Due to an error {result.Message}");
-            }
 
             var session = await repository.Sessions.FindAsync(request.SessionCode);
             if (session == null)

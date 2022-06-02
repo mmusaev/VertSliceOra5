@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VertSliceOra5", "VertSliceO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VertSliceOra5.Test", "..\VertSliceOra5.Test\VertSliceOra5.Test.csproj", "{F1CA1506-75DC-45C2-9B7D-91A8DC862DBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenchMarkLogic", "..\BenchMarkLogic\BenchMarkLogic.csproj", "{8B6CA735-D809-4C6B-80D7-28FD510B483B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F1CA1506-75DC-45C2-9B7D-91A8DC862DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1CA1506-75DC-45C2-9B7D-91A8DC862DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1CA1506-75DC-45C2-9B7D-91A8DC862DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B6CA735-D809-4C6B-80D7-28FD510B483B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B6CA735-D809-4C6B-80D7-28FD510B483B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B6CA735-D809-4C6B-80D7-28FD510B483B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B6CA735-D809-4C6B-80D7-28FD510B483B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
