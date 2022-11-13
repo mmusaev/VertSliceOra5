@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using MediatR;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using VertSliceOra5.Infrastructure;
@@ -36,9 +37,19 @@ namespace VertSliceOra5.Features.Sessions
                     .MaximumLength(2)
                     .WithMessage("Maximum lenght for the Name is 2 characters.");
 
+                RuleFor(x => x)
+                    .MustAsync(SessionCheck)
+                    .WithMessage("Session code doesn't exist");
                 // RuleFor(x => x.Age).NotNull();
                 //RuleFor(x => x.Position).NotNull().MaximumLength(20).WithMessage("Maximum length for the position is 20 characters.");
             }
+
+            //Can check database here
+            private Task<bool> SessionCheck(GetSessionQuery arg1, CancellationToken arg2)
+            {
+                return Task.FromResult(arg1.SessionCode == "Ta");
+            }
+
         }
     }
 
